@@ -10,11 +10,12 @@ var outer = function(){
 //Invoke outer saving the return value into another variable called 'inner'.
 
   //Code Here
+  var inner = outer;
 
 //Once you do that, invoke inner.
 
   //Code Here
-
+inner;
 
 
 //Next problem
@@ -33,7 +34,8 @@ var callFriend = function(){
 //Do what you need to do in order to call your function and get 'Calling Jake at 435-215-9248' in your console.
 
   //Code Here
-
+var callJake = callFriend();
+callJake("435-215-9248");
 
 
 //Next Problem
@@ -45,11 +47,19 @@ var callFriend = function(){
 */
 
   //Code Here
+function makeCounter() {
+  var num = 0;
+  return function() {
+    ++num;
+    return num;
+  }
+}
+
   var count = makeCounter();
-  count(); // 1
-  count(); // 2
-  count(); // 3
-  count(); // 4
+  count(); 
+  count(); 
+  count(); 
+  count(); 
 
 
 
@@ -62,8 +72,27 @@ var callFriend = function(){
 */
 
   //Code Here
+  //The first part works
+function codeLove() {
+  var whatDoILove = "I love code";
+  return whatDoILove;
+}
 
+function codeFriend(func) {
+  var flag = true;
+  return function(){
+    if(flag) {
+      flag = false;
+      return func();
+    } else {
+      return null;
+    }
+  }
+  
+} 
 
+var codeEcho = codeFriend(codeLove);
+codeEcho();
 
 //Next Problem
 
@@ -74,8 +103,19 @@ var callFriend = function(){
 
   //Code Here
   
+var nTimes = function(func, limit) {
+  var timesCalled = 0;
+  return function() {
+    if(timesCalled <= limit) {
+      timesCalled++
+      return func();
+    } else {
+      return "STOP";
+    }
+  }
+}
 
-
+var threeTimes = nTimes(codeLove, 3);
 //Next Problem
 
 
@@ -106,7 +146,13 @@ var callFriend = function(){
 
     //Code Here
 
-
+  var counter = function(){
+    for (var i=1; i<=5; i++) {
+      setTimeout( function timer(num){
+          console.log(num);
+      }, i*1000, i );
+    }
+  };
 
 //Next Problem
 
@@ -124,5 +170,18 @@ var callFriend = function(){
 
   *Hint: Don't let this fool you. Break down what's really happening here.
 */
+var returnNum = function(){
+  
+}
 
+var makefuns = function(){
+  var funcArray = [];
+  for(var i = 0; i < 5; i++){
+    funcArray.push(function() {
+    }
+    return funcArray;
+  }
 
+}
+
+arr = makeFuns();
